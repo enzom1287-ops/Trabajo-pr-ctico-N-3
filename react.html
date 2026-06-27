@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
      <h1>REACT</h1>
@@ -68,7 +69,7 @@
             return(
                 <div>
                     <form onSubmit={agregar}>
-                         <label>NOMBRE <input name="nombre" type="text" value={form.nombre} onChange={handleChange} required /></label>
+                        <label>NOMBRE <input name="nombre" type="text" value={form.nombre} onChange={handleChange} required /></label>
                         <label>APELLIDO <input name="apellido" type="text" value={form.apellido} onChange={handleChange} required /></label>
                         <label>EDAD <input name="edad" type="number" value={form.edad} onChange={handleChange} required /></label>
                         <label>ALTURA (cm) <input name="altura" type="number" value={form.altura} onChange={handleChange} required /></label>

@@ -25,13 +25,13 @@ let personas = [];
 
         let categoria;
         if (imc < 18.5) {
-            categoia = "Bajo Peso";
+            categoria = "Bajo Peso";
         }else if (imc < 25) {
-            categoia = "Normal";
+            categoria = "Normal";
         }else if (imc < 30) {
-            categoia = "Sobrepeso";
+            categoria = "Sobrepeso";
         }else { 
-            categoia = "Obesidad";
+            categoria = "Obesidad";
         }
 
         //guardar persona
@@ -50,7 +50,7 @@ let personas = [];
             <div>
             <p><strong>${persona.valornombre} ${persona.valorapellido}</strong></p>
             <p>Edad: ${persona.valoredad} | Altura: ${persona.valoraltura}cm | Peso: ${persona.valorpeso}kg</p>
-            <p>IMC: ${persona.imc.toFixed(2)} - ${persona.categoia}</p>
+            <p>IMC: ${persona.imc.toFixed(2)} - ${persona.categoria}</p>
             <button type="button" onclick="eliminar(${index})">ELIMINAR</button>
             <hr>
             </div>
