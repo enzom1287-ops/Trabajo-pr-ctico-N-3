@@ -23,7 +23,7 @@ let personas = [];
         const alturaM = valoraltura / 100;
         const imc = valorpeso / (alturaM ** 2);
 
-        let categoia;
+        let categoria;
         if (imc < 18.5) {
             categoia = "Bajo Peso";
         }else if (imc < 25) {
@@ -35,7 +35,7 @@ let personas = [];
         }
 
         //guardar persona
-        personas.push({valornombre, valorapellido, valoredad, valoraltura, valorpeso, imc, categoia});
+        personas.push({valornombre, valorapellido, valoredad, valoraltura, valorpeso, imc, categoria});
 
         formulario.reset(); //limpiar el formulario
         renderizar ();
@@ -51,7 +51,7 @@ let personas = [];
             <p><strong>${persona.valornombre} ${persona.valorapellido}</strong></p>
             <p>Edad: ${persona.valoredad} | Altura: ${persona.valoraltura}cm | Peso: ${persona.valorpeso}kg</p>
             <p>IMC: ${persona.imc.toFixed(2)} - ${persona.categoia}</p>
-            <button type="button" onclick="eliminar (${index})">ELIMINAR</button>
+            <button type="button" onclick="eliminar(${index})">ELIMINAR</button>
             <hr>
             </div>
     `;
