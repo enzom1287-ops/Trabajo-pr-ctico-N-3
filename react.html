@@ -1,14 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REACT</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
 </head>
 <body>
      <h1>REACT</h1>
+     <a href="index.html">INDEX</a>
 
+     <div id="root"></div>
 
-     <footer class="footer"> © 2026 Derechos reservados de React - Creado por Enzo Leonel Mercado </footer>
+     <script type="text/babel">
+
+        function App() {
+            const [personas, setPersonas] = React.useState([]);
+            const [form, setForm]= React.useState({
+                nombre: "", apellido: "", edad: "", altura: "", peso: "" 
+
+            });
+
+            function handleChange(e){
+                setForm({ ...form, [e.target.name]: e.target.value});
+            }
+
+            function calcularIMC(peso, altura){
+                const alturaM = altura / 100;
+                const imc = peso / (alturaM ** 2 );
+                let categoria;
+                if (imc < 18.5) categoria="Bajo Peso";
+                else if (imc <25) categoria = "Normal";
+                else if (imc <30) categoria = "Sobrepeso";
+                else categoria = "Obesidad";
+                return {imc: imc.toFixed(2), categoria };
+            }
+            
+            function agregar (e) {
+                e.preventDefault();
+                const {nombre, apellido, edad, altura, peso} = form;
+
+                if (Number(edad) <= 0 || Number(altura) <=0 || Number(peso)<=0){
+                    alert ("Edad, altura y peso deben ser valores positivos.");
+                    return;
+                }
+                const { imc, categoria } = calcularIMC(Number(peso), Number(altura));
+
+                setPersonas([...personas, {
+                    nombre, apellido,
+                    edad: Number(edad),
+                    altura: Number(altura),
+                    peso: Number(peso),
+                    imc, categoria
+                }]);
+
+                setForm({nombre: "", apellido: "", edad: "", altura: "", peso: ""});
+
+            }
+
+            function eliminar(index) {
+                setPersonas(personas.filter((_, i)  => i !==index));
+            }
+
+            return(
+                <div>
+                    <form onSubmit={agregar}>
+                         <label>NOMBRE <input name="nombre" type="text" value={form.nombre} onChange={handleChange} required /></label>
+                        <label>APELLIDO <input name="apellido" type="text" value={form.apellido} onChange={handleChange} required /></label>
+                        <label>EDAD <input name="edad" type="number" value={form.edad} onChange={handleChange} required /></label>
+                        <label>ALTURA (cm) <input name="altura" type="number" value={form.altura} onChange={handleChange} required /></label>
+                        <label>PESO (kg) <input name="peso" type="number" value={form.peso} onChange={handleChange} required /></label>
+                        <button type="submit">AGREGAR</button>
+                    </form>
+                    {personas.length > 0 && (
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Edad</th>
+                                    <th>Altura</th>
+                                    <th>Peso</th>
+                                    <th>IMC</th>
+                                    <th>Categoria</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {personas.map((p, i) => (
+                                    <tr key={i}>
+                                        <td>{p.nombre}</td>
+                                        <td>{p.apellido}</td>
+                                        <td>{p.edad}</td>
+                                        <td>{p.altura} cm</td>
+                                        <td>{p.peso} kg</td>
+                                        <td>{p.imc}</td>
+                                        <td>{p.categoria}</td>
+                                        <td><button onClick={() => eliminar(i)}>ELIMINAR</button></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+    </script>
+
+    <footer>© 2026 Derechos reservados - Creado por Enzo Leonel Mercado</footer>
 </body>
 </html>
