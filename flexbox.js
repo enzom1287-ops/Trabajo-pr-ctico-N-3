@@ -1,10 +1,10 @@
 const datos = ["House Of The Dragon","From","Game Of Thrones","True Detective","Cowboy Bebop","The Boys","Attack On Titan","The Office", "Lazarus"];
-const elementos=[...datos];
+const elementos=[...datos];  // array con todos los datos de las series
 
-const contenedor = document.getElementById('contenedor-flex');
+const contenedor = document.getElementById('contenedor-flex'); // referencia al DOM
 const boton = document.getElementById('boton-interaccion');
 
-function renderizar() {
+function renderizar() {  //funcion que limpia el contenedor
 
     contenedor.innerHTML = '';
 
@@ -17,7 +17,7 @@ function renderizar() {
 
 }
 
-    boton.addEventListener('click', () => {
+    boton.addEventListener('click', () => { //clic del boton para ordenar 
         elementos.reverse();
         renderizar();
     });

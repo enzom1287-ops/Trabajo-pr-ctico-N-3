@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">// conectar al react, correccion de funcionamiento con github y enlace a css
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REACT</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -16,9 +16,9 @@
 
      <div id="root"></div>
 
-     <script type="text/babel">
+     <script type="text/babel"> // procesamiento de babel a JSX
 
-        function App() {
+        function App() { //creaccion del foprmulario y carga de variables, entre declaraciones y IMC
             const [personas, setPersonas] = React.useState([]);
             const [form, setForm]= React.useState({
                 nombre: "", apellido: "", edad: "", altura: "", peso: "" 

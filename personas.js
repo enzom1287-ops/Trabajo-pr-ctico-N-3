@@ -1,4 +1,4 @@
-console.log("Conectado!");
+console.log("Conectado!"); //saber si el js esta conectado al html
 
 const formulario = document.getElementById("formulario");
 let personas = [];
@@ -58,7 +58,7 @@ let personas = [];
     });
     
 }
-    function eliminar(index){
+    function eliminar(index){ // eliminador de personas para dejar limpio todo para usar de nuevo
         personas.splice(index, 1);
         renderizar();
     }
